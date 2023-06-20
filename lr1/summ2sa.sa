@@ -1,0 +1,15 @@
+; программа для вычисления суммы квадратов
+    .global _summ2sa
+
+_summ2sa:   .cproc      data,   count
+            .reg        x, mult, result:result1
+            zero        result:result1
+
+loop:
+            ldh         *data++, x
+            mpy         x, x, mult
+            add         mult, result:result1, result:result1
+            sub         count, 1, count
+[count]     b           loop
+            .return     result:result1
+            .endproc
